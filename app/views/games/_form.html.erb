@@ -1,0 +1,29 @@
+<%= form_for (@game) do |f| %>
+
+    <div class = "field">
+      <%= f.label :name, "Name" %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class = "field">
+      <%= f.label :developer %>
+      <%= f.text_field :developer %>
+    </div>
+
+    <div class = "field">
+      <%= f.label :genre %>
+      <%= f.text_field :genre %>
+    </div>
+
+    <div class = "field">
+      <%= f.label :comments %>
+      <%= f.text_field :comments %>
+
+
+
+    <div class = "actions">
+      <%= f.submit ("Add game") %>
+    </div>
+
+
+  <% end %>
