@@ -5,3 +5,10 @@
       <li>Genre: <%= @game.genre %></li>
       <li>Comments: <%= @game.comments %></li>
     </ul>
+    <p><%= link_to 'Back', games_path %></p>
+
+
+    <% if user_signed_in? %>
+      <br /><%= link_to 'Edit', edit_game_path(@game) %>
+      | <%= link_to 'Delete Game', @game, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>

@@ -29,6 +29,25 @@ class GamesController < ApplicationController
     end
   end
 
+  def update
+    if user_signed_in?
+      if @game.update(game_params)
+        redirect_to @game,
+          notice: 'Game was successfully updated'
+      else
+        render :edit
+      end
+    end
+  end
+
+  def destroy
+    if user_signed_in?
+      @game.destroy
+      redirect_to games_url,
+        notice: 'Game was successfully deleted'
+    end
+  end
+
   private
 
   def set_game

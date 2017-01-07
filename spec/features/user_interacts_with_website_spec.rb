@@ -17,7 +17,6 @@ feature 'user interacts with website' do
     click_button "Add game"
 
     expect(page).to have_content("Games")
-
   end
 
   let!(:game) { FactoryGirl.create(:game) }
@@ -27,7 +26,6 @@ feature 'user interacts with website' do
     visit games_path
 
     expect(page).to have_content("Test Game")
-
   end
 
   scenario 'user views details of item in list' do
@@ -36,6 +34,28 @@ feature 'user interacts with website' do
     click_link "Test Game"
 
     expect(page).to have_content("ok then")
+  end
 
+  scenario 'user edits item in list' do
+    login_as(user)
+    visit games_path
+    click_link "Test Game"
+    click_link "Edit"
+
+    fill_in "Genre", with: "scary"
+    fill_in "Comments", with: "new comment now"
+    click_button "Add game"
+
+    expect(page).to have_content("scary")
+    expect(page).to have_content("new comment now")
+  end
+
+  scenario 'user deletes item in list' do
+    login_as(user)
+    visit games_path
+    click_link "Test Game"
+    click_link "Delete Game"
+
+    expect(page).to have_content("Game was successfully deleted")
   end
 end

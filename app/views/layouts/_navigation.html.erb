@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
   signed in as <strong><%= current_user.username %></strong>
-  <li><%= link_to :sign_out, destroy_user_session_path, method: :delete %></li>
-  <li><%= link_to :edit, edit_user_registration_path %></li>
+  <br /><%= link_to :sign_out, destroy_user_session_path, method: :delete %>
+  | <%= link_to :edit, edit_user_registration_path %>
 <% else %>
-  <li><%= link_to :sign_in, new_user_session_path %></li>
-  <li><%= link_to 'Sign up', new_user_registration_path %></li>
+  <%= link_to :sign_in, new_user_session_path %>
+  | <%= link_to 'Sign up', new_user_registration_path %>
 
 <% end %>
