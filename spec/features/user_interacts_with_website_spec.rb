@@ -4,6 +4,8 @@ feature 'user interacts with website' do
 
   # let!(:user) { User.create(username: "User1") }
   let!(:user) { FactoryGirl.create(:user) }
+  let!(:game) { FactoryGirl.create(:game) }
+
 
   scenario 'user creates a new item for review' do
     login_as(user)
@@ -19,7 +21,7 @@ feature 'user interacts with website' do
     expect(page).to have_content("Games")
   end
 
-  let!(:game) { FactoryGirl.create(:game) }
+  let!(:user) { FactoryGirl.create(:user, role: 'admin') }
 
   scenario 'user views list of items' do
     visit games_path
@@ -27,7 +29,7 @@ feature 'user interacts with website' do
     expect(page).to have_content("Test Game")
   end
 
-  scenario 'user views details of item in list' do
+  pending scenario 'user views details of item in list' do
     visit games_path
     click_link "Test Game"
 

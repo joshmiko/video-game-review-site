@@ -6,7 +6,7 @@
   </ul>
 
 
-    <% if user_signed_in? %>
+  <% if current_user && current_user.is_admin? || current_user.id == @review.user_id %>
       <br /><%= link_to 'Edit', edit_game_review_path(@game, @review) %>
       | <%= link_to 'Delete Review', game_review_path(@game, @review), method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>

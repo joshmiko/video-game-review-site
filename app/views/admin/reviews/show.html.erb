@@ -1,0 +1,8 @@
+<h3><%= @review.title %></h3>
+
+  <h4>Author: <%= @review.username %></h4>
+  <h4>body: <%= @review.body %></h4>
+  <h4>Review created: <%= @review.created_at %></h4>
+  <hr>
+  <%= button_to 'Return to Index', :back, class: "button", :method => :get %>
+  <%= button_to 'Delete Review', admin_review_path(@review), method: :delete, data: { confirm: 'Are you sure?' } %>

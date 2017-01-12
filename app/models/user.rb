@@ -6,4 +6,8 @@
 
   has_many :reviews
   has_many :games, through: :reviews
+
+  def is_admin?
+    role == 'admin'
+  end
 end

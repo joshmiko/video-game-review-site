@@ -15,9 +15,6 @@
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <% if user_signed_in? %>
-      <%= link_to "Add a new Game", new_game_path %>
-    <% end %>
 
     <%= yield %>
   </body>

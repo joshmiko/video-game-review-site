@@ -22,7 +22,7 @@ feature 'user interacts with new account' do
     login_as(user)
     visit "/"
 
-    expect(page).to have_content("signed in as User2")
+    expect(page).to have_content("signed in as #{user.username}")
   end
 
   scenario 'user signs out of account' do
