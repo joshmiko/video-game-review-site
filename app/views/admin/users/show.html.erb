@@ -1,0 +1,9 @@
+<h3><%= @user.username %></h3>
+  <hr>
+  <h4>Current Role: <%= @user.role %></h4>
+  <h4>Last active login: <%= @user.last_sign_in_at %></h4>
+  <h4>Account created: <%= @user.created_at %></h4>
+  <hr>
+  <%= button_to 'Return to Index', :back, class: "button", :method => :get %>
+  <%= button_to 'Delete User', admin_user_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>

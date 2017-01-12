@@ -58,7 +58,7 @@ feature 'user interacts with reviews' do
     expect(page).to have_content("whoaa, that's a bummer")
   end
 
-  scenario 'user edits a review for an item' do
+  scenario 'user deletes a review for an item' do
     login_as(user)
     visit games_path
     click_link "Test Game"

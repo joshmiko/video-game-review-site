@@ -2,8 +2,12 @@
   signed in as <strong><%= current_user.username %></strong>
   <br /><%= link_to :sign_out, destroy_user_session_path, method: :delete %>
   | <%= link_to 'edit info', edit_user_registration_path %>
+    <% if current_user && current_user.is_admin? %>
+         | <strong><%= link_to 'Admin tools', admin_home_index_path %></strong>
+    <% end %>
+
 <% else %>
   <%= link_to :sign_in, new_user_session_path %>
   | <%= link_to 'Sign up', new_user_registration_path %>
-
 <% end %>
+<h5><%= link_to 'Home', games_path %></h5>

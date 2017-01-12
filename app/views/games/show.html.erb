@@ -1,5 +1,5 @@
 <h1> <%= @game.name %></h1>
-<% if user_signed_in? %>
+<% if current_user && current_user.is_admin? || current_user.id == @game.user_id %>
   <h5><%= link_to 'Edit', edit_game_path(@game) %>
   | <%= link_to 'Delete Game', @game, method: :delete, data: { confirm: 'Are you sure?' } %></h5>
 <% end %>
@@ -11,9 +11,8 @@
       <li>Genre: <%= @game.genre %></li>
       <li>Comments: <%= @game.comments %></li>
     </ul>
-
+<hr>
 <h2><Strong>What the people are thinking:</strong></h2>
-
     <% if user_signed_in? %>
       <h5><%= link_to "Add a Review", new_game_review_path(@game) %></h5>
     <% end %>
@@ -21,11 +20,10 @@
     <% @reviews.each do |review| %>
       <h3><strong><%= review.title %></strong></h3>
       <h5>Reviewed by: <%= review.username %></h5>
-
       <%= review.body %>
 
-
-      <% if current_user.username == review.username %>
+      <% if current_user && current_user.is_admin? || current_user.id == review.user_id %>
         <h5><%= link_to "Wanna change your review for: #{@game.name}?", game_review_path(@game, review) %></h5>
       <% end %>
+<hr>
     <% end %>

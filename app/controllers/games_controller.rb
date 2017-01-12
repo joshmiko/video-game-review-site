@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+
   before_action :set_game,
   only: [:show, :edit, :update, :destroy]
 
@@ -61,7 +62,8 @@ class GamesController < ApplicationController
       :name,
       :developer,
       :genre,
-      :comments
+      :comments,
+      :user_id
     )
   end
 

@@ -1,0 +1,12 @@
+<h1>Master List of Reviews</h1>
+
+  <% @reviews.each do |review| %>
+  <ul>
+      <strong><%= review.game.name %></strong>
+      <li><%= link_to review.title, admin_review_path(review) %></li>
+    </ul>
+    <% end %>
+
+<hr>
+
+<%= link_to 'Back to Control Panel', admin_home_index_path %>

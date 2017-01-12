@@ -1,0 +1,8 @@
+<h1>Master List of Users</h1>
+  <ul>
+    <% @users.each do |user| %>
+      <li><%= link_to user.username, admin_user_path(user) %></li>
+    <% end %>
+  </ul>
+
+  <%= link_to 'Back to Control Panel', admin_home_index_path %>

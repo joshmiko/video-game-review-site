@@ -1,0 +1,9 @@
+<h3><%= @game.name %></h3>
+  <hr>
+  <h4>Developer: <%= @game.developer %></h4>
+  <h4>Genre: <%= @game.genre %></h4>
+  <h4>Game created: <%= @game.created_at %></h4>
+  <hr>
+  <%= button_to 'Return to Index', :back, class: "button", :method => :get %>
+  <%= button_to 'Delete Game', admin_game_path(@game), method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>

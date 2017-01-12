@@ -6,4 +6,13 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
+  namespace :admin do
+    resources :users, except: [:new, :edit, :update]
+    resources :games, except: [:new, :edit, :update]
+    resources :reviews, except: [:new, :edit, :update]
+    resources :home, only: [:index]
+
+
+  end
+
 end

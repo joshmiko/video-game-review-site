@@ -18,6 +18,11 @@
     <div class = "field">
       <%= f.label :comments %>
       <%= f.text_field :comments %>
+    </div>
+
+    <div>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+    </div>
 
 
 
