@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   signed in as <strong><%= current_user.username %></strong>
   <br /><%= link_to :sign_out, destroy_user_session_path, method: :delete %>
-  | <%= link_to :edit, edit_user_registration_path %>
+  | <%= link_to 'edit info', edit_user_registration_path %>
 <% else %>
   <%= link_to :sign_in, new_user_session_path %>
   | <%= link_to 'Sign up', new_user_registration_path %>

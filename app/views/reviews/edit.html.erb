@@ -1,0 +1,34 @@
+<h1> Edit your review</h1>
+
+<%= form_for [@game, @review] do |f| %>
+
+<% if @review.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+        <ul>
+          <% @review.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class = "field">
+      <%= f.label :title, 'Edit Title' %>
+      <%= f.text_field :title, :value => @review.title %>
+    </div>
+
+    <div class = "field">
+      <%= f.label :body, 'Edit Body' %>
+      <%= f.text_field :body, :value => @review.body %>
+    </div>
+
+    <div class = "actions">
+      <%= f.submit ("Submit Changes") %>
+    </div>
+
+    <h5><%= link_to "Changed your mind?", game_review_path(@game, @review) %></h5>
+
+
+
+  <% end %>

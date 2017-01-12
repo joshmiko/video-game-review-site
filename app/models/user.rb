@@ -4,6 +4,6 @@
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :game_collections
-  has_many :games, through: :game_collections
+  has_many :reviews
+  has_many :games, through: :reviews
 end
