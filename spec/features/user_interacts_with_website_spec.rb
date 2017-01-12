@@ -22,14 +22,12 @@ feature 'user interacts with website' do
   let!(:game) { FactoryGirl.create(:game) }
 
   scenario 'user views list of items' do
-    login_as(user)
     visit games_path
 
     expect(page).to have_content("Test Game")
   end
 
   scenario 'user views details of item in list' do
-    login_as(user)
     visit games_path
     click_link "Test Game"
 

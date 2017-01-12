@@ -1,0 +1,14 @@
+
+  <p><strong><%= @review.title %></strong>
+  <br />Reviewed by: <%= @review.username %>
+  <ul>
+    <li><%= @review.body %></li>
+  </ul>
+
+
+    <% if user_signed_in? %>
+      <br /><%= link_to 'Edit', edit_game_review_path(@game, @review) %>
+      | <%= link_to 'Delete Review', game_review_path(@game, @review), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+
+    <p><%= link_to 'Back', games_path %></p>
