@@ -13,3 +13,40 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function() {
+
+  function ajaxPost(review_id, value) {
+    var request = $.ajax({
+      method: "POST",
+      url: "/api/v1/votes",
+      data: {
+        vote: { review_id: review_id, value: value }
+      }
+    });
+
+    request.done(function(data) {
+      $("#vote-total-" + data.reviewID).text(data.voteTotal);
+      $("#flash-container").text(data.voteMessage);
+    });
+  }
+
+
+
+  $('.upvote').on('click', function(e) {
+    e.preventDefault();
+
+    var reviewID = this.id.split('-')[1];
+    ajaxPost(reviewID, 1);
+  });
+
+  $('.downvote').on('click', function(e) {
+    e.preventDefault();
+
+    var reviewID = this.id.split('-')[1];
+    ajaxPost(reviewID, -1);
+
+  });
+
+  
+});

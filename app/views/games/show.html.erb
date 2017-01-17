@@ -22,6 +22,30 @@
       <h5>Reviewed by: <%= review.username %></h5>
       <%= review.body %>
 
+
+    <h5><strong><span class="vote-total" >Vote Ranking:
+      <span id="vote-total-<%= review.id %>" >
+        <% if review.vote_total %>
+          <%= review.vote_total %>
+        <% else %>
+          0
+        <% end %>
+      </span>
+    </span></strong></h5>
+
+    <% if user_signed_in? %>
+    <div id="voting-buttons">
+      <%= button_to "+", votes_path(Vote.new, params: { vote: { user_id: current_user.id, review_id: review.id, value: 1 } }), method: :post, id: "upvote-#{review.id}", class: "upvote" %>
+      <%= button_to "-", votes_path(Vote.new, params: { vote: { user_id: current_user.id, review_id: review.id, value: -1 } }), method: :post, id: "downvote-#{review.id}", class: "downvote" %>
+    </div>
+  <% end %>
+
+    <% if !user_signed_in? %>
+      (<%= link_to "Sign in to vote!", new_user_session_path %>)
+    <% end %>
+  </div>
+
+
       <% if current_user && current_user.is_admin? || current_user.id == review.user_id %>
         <h5><%= link_to "Wanna change your review for: #{@game.name}?", game_review_path(@game, review) %></h5>
       <% end %>
